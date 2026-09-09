@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+dist/
+dist-ssr/
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# Editor & OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.local
+.tempmediaStorage/
+.system_generated/
