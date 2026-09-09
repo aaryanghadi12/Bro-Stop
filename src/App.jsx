@@ -14,6 +14,7 @@ import { speakSanjuDutt } from './services/voiceService';
 import { calculateImpulseScore } from './services/impulseEngine';
 import { generateGeminiRoast } from './services/roastEngine';
 import { getMemeForCategory } from './data/memeTemplates';
+import { api } from './services/api';
 import { getStoredSession, setStoredSession, clearStoredSession } from './services/authService';
 import { loadExpenses, saveExpenses, loadSettings, saveSettings, resetToDemoData } from './services/storage';
 
@@ -27,6 +28,17 @@ export function App() {
   const [toast, setToast] = useState(null);
   const [showSettings, setShowSettings] = useState(false);
   const [viewMode, setViewMode] = useState('mobile'); // 'mobile' | 'desktop'
+
+  // Fetch / Sync with Backend on mount or user change
+  useEffect(() => {
+    if (currentUser) {
+      api.getExpenses(currentUser.id).then(backendExpenses => {
+        if (backendExpenses && backendExpenses.length > 0) {
+          setExpenses(backendExpenses);
+        }
+      });
+    }
+  }, [currentUser]);
 
   // Persist expenses whenever changed
   useEffect(() => {
@@ -46,10 +58,11 @@ export function App() {
   const showToast = (msg) => setToast(msg);
 
   // Authentication Handlers
-  const handleLoginSuccess = (user) => {
+  const handleLoginSuccess = async (user) => {
     setCurrentUser(user);
     setStoredSession(user);
-    const userExpenses = loadExpenses(user.id);
+    const backendExpenses = await api.getExpenses(user.id);
+    const userExpenses = (backendExpenses && backendExpenses.length > 0) ? backendExpenses : loadExpenses(user.id);
     const userSettings = loadSettings(user.id);
     setExpenses(userExpenses);
     setSettings(userSettings);
@@ -63,40 +76,54 @@ export function App() {
   };
 
   // Expense Handlers
-  const handleSubmit = async ({ amount, description, category, timestamp }) => {
-    const calc = calculateImpulseScore({ amount, category, timestamp, description, recentExpenses: expenses });
-    const roast = await generateGeminiRoast({ description, amount, category, tier: calc.tier, timestamp, apiKey: settings.geminiApiKey });
-    const meme = getMemeForCategory(category, calc.tier);
+  const handleSubmit = async ({ amount, description, category, timestamp, receiptImage }) => {
+    // 1. Sync with backend API
+    const backendExp = await api.addExpense({
+      amount,
+      description,
+      category,
+      timestamp,
+      userId: currentUser?.id || 'user_aaryan',
+      receiptImage
+    });
 
-    const exp = {
-      id: `exp_${Date.now()}`,
-      description, amount, category, timestamp,
-      impulseScore: calc.score, tier: calc.tier,
-      severityLabel: calc.severityLabel,
-      isMidnightDemonic: calc.isMidnightDemonic,
-      roastText: roast, memeId: meme.id
-    };
+    let exp = backendExp;
+    if (!exp) {
+      const calc = calculateImpulseScore({ amount, category, timestamp, description, recentExpenses: expenses });
+      const roast = await generateGeminiRoast({ description, amount, category, tier: calc.tier, timestamp, apiKey: settings.geminiApiKey });
+      const meme = getMemeForCategory(category, calc.tier);
+      exp = {
+        id: `exp_${Date.now()}`,
+        description, amount, category, timestamp,
+        impulseScore: calc.score, tier: calc.tier,
+        severityLabel: calc.severityLabel,
+        isMidnightDemonic: calc.isMidnightDemonic,
+        roastText: roast, memeId: meme.id, receiptImage
+      };
+    }
 
     setExpenses(prev => [exp, ...prev]);
 
-    if (calc.tier === 'SAVAGE' || calc.tier === 'MEDIUM') {
+    if (exp.tier === 'SAVAGE' || exp.tier === 'MEDIUM') {
       setModalExpense(exp);
       if (settings.audioEnabled) {
-        speakSanjuDutt(roast);
+        speakSanjuDutt(exp.roastText);
       }
     } else {
-      showToast(`Logged ₹${amount} — ${roast}`);
-      if (calc.tier === 'SAFE') confetti({ particleCount: 25, spread: 50, origin: { y: 0.8 } });
+      showToast(`Logged ₹${amount} — ${exp.roastText}`);
+      if (exp.tier === 'SAFE') confetti({ particleCount: 25, spread: 50, origin: { y: 0.8 } });
     }
   };
 
   const handleCancel = (id) => {
+    api.deleteExpense(id, currentUser?.id || 'user_aaryan');
     setExpenses(prev => prev.filter(e => e.id !== id));
     showToast('Splurge cancelled! Your dignity is saved 🛡️');
     confetti({ particleCount: 40, spread: 60, origin: { y: 0.7 } });
   };
 
   const handleDelete = (id) => {
+    api.deleteExpense(id, currentUser?.id || 'user_aaryan');
     setExpenses(prev => prev.filter(e => e.id !== id));
     showToast('Record deleted');
   };

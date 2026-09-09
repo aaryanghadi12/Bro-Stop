@@ -1,0 +1,231 @@
+{
+  "users": [
+    {
+      "id": "user_aaryan",
+      "name": "Aaryan Sharma",
+      "phone": "+91 98765 43210",
+      "email": "aaryan@example.com",
+      "avatar": "👨‍💻",
+      "monthlyBudget": 25000,
+      "joinDate": "Jan 2026"
+    },
+    {
+      "id": "user_neha",
+      "name": "Neha Verma",
+      "phone": "+91 98111 22334",
+      "email": "neha@example.com",
+      "avatar": "👩‍🎨",
+      "monthlyBudget": 35000,
+      "joinDate": "Feb 2026"
+    }
+  ],
+  "expenses": {
+    "user_aaryan": [
+      {
+        "id": "exp_1788945603018",
+        "description": "Myntra: Casual Shoes 50% Off",
+        "amount": 2600,
+        "category": "shopping_fashion",
+        "timestamp": "2026-09-09T09:20:01.331Z",
+        "impulseScore": 48,
+        "tier": "MEDIUM",
+        "severityLabel": "Level 2: Medium Roast",
+        "isMidnightDemonic": false,
+        "roastText": "Bole toh sach bol, \"Myntra: Casual Shoes 50% Off\" ka zaroorat tha ya bas dopamine rush ke liye add to cart kiya tha?",
+        "sipOpportunity": {
+          "futureValue": 8075,
+          "years": 10
+        },
+        "receiptImage": null
+      },
+      {
+        "id": "exp_1788945597723",
+        "description": "Fresh Vegetables & Bread",
+        "amount": 220,
+        "category": "groceries_essentials",
+        "timestamp": "2026-09-09T09:19:56.926Z",
+        "impulseScore": 4,
+        "tier": "SAFE",
+        "severityLabel": "Responsible Spend",
+        "isMidnightDemonic": false,
+        "roastText": "Sensible spend of ₹220 mamu. Apun khush hai, wallet safe hai! 👍",
+        "sipOpportunity": {
+          "futureValue": 683,
+          "years": 10
+        },
+        "receiptImage": null
+      },
+      {
+        "id": "exp_1788945531323",
+        "description": "Myntra: Casual Shoes 50% Off",
+        "amount": 2600,
+        "category": "shopping_fashion",
+        "timestamp": "2026-09-09T09:18:50.064Z",
+        "impulseScore": 40,
+        "tier": "MEDIUM",
+        "severityLabel": "Level 2: Medium Roast",
+        "isMidnightDemonic": false,
+        "roastText": "Retail therapy se dil ka dard theek nahi hota mamu, bas EMI ka tension badhta hai. ₹2600 paani mein!",
+        "sipOpportunity": {
+          "futureValue": 8075,
+          "years": 10
+        },
+        "receiptImage": null
+      },
+      {
+        "id": "exp_1788945467779",
+        "description": "Blinkit: Doritos + Cold Coffee + Brownie",
+        "amount": 430,
+        "category": "late_night_snacks",
+        "timestamp": "2026-09-08T21:00:00.000Z",
+        "impulseScore": 87,
+        "tier": "SAVAGE",
+        "severityLabel": "Level 3: Savage Guilt-Trap",
+        "isMidnightDemonic": true,
+        "roastText": "Delivery partner raat ko 3 baje soch raha hoga: 'Bole toh yeh banda din mein so ke raat ko paise kyu jala raha hai?'",
+        "sipOpportunity": {
+          "futureValue": 1336,
+          "years": 10
+        },
+        "receiptImage": null
+      },
+      {
+        "id": "exp_1788944996249",
+        "description": "Midnight Butter Chicken + Naan (Swiggy)",
+        "amount": 590,
+        "category": "food_delivery",
+        "timestamp": "2026-09-08T21:00:00.000Z",
+        "impulseScore": 92,
+        "tier": "SAVAGE",
+        "severityLabel": "Level 3: Savage Guilt-Trap",
+        "isMidnightDemonic": true,
+        "roastText": "Aey Bhai! Bole toh ek aur Swiggy order? ₹590 uda diye! Fridge showpiece ke liye rakha hai kya mamu?",
+        "sipOpportunity": {
+          "futureValue": 1832,
+          "years": 10
+        },
+        "receiptImage": null
+      },
+      {
+        "id": "exp_1788944839125",
+        "description": "2AM Swiggy",
+        "amount": 590,
+        "category": "food_delivery",
+        "timestamp": "2026-09-08T21:00:00.000Z",
+        "impulseScore": 92,
+        "tier": "SAVAGE",
+        "severityLabel": "Level 3: Savage Guilt-Trap",
+        "isMidnightDemonic": true,
+        "roastText": "Mamu! Waah re shehzade, ₹590 ka biryani akele pel diya? Month-end pe dosto se bheekh mangte phiroge dekh lena!",
+        "sipOpportunity": {
+          "futureValue": 1832,
+          "years": 10
+        },
+        "receiptImage": null
+      },
+      {
+        "id": "exp_1788944697478",
+        "description": "Midnight Chicken Roll",
+        "amount": 650,
+        "category": "food_delivery",
+        "timestamp": "2026-09-09T09:04:57.478Z",
+        "impulseScore": 50,
+        "tier": "MEDIUM",
+        "severityLabel": "Level 2: Medium Roast",
+        "isMidnightDemonic": false,
+        "roastText": "Delivery boy ko apna ghar ka address by heart yaad ho gaya hai mamu. Thoda control karo!",
+        "sipOpportunity": {
+          "futureValue": 2019,
+          "years": 10
+        },
+        "receiptImage": null
+      },
+      {
+        "id": "exp_1",
+        "description": "Midnight Dum Biryani + Extra Raita (Swiggy)",
+        "amount": 580,
+        "category": "food_delivery",
+        "timestamp": "2026-09-09T06:03:37.920Z",
+        "impulseScore": 92,
+        "tier": "SAVAGE",
+        "severityLabel": "Level 3: Savage Guilt-Trap",
+        "roastText": "Aey Bhai! Bole toh ek aur Swiggy order? ₹580 uda diye! Fridge showpiece ke liye rakha hai kya mamu?",
+        "memeId": "babu_bhaiya",
+        "isMidnightDemonic": true
+      },
+      {
+        "id": "exp_2",
+        "description": "Blinkit: Doritos + 2 Monster Energy + Brownie",
+        "amount": 420,
+        "category": "late_night_snacks",
+        "timestamp": "2026-09-08T19:03:37.920Z",
+        "impulseScore": 86,
+        "tier": "SAVAGE",
+        "severityLabel": "Level 3: Savage Guilt-Trap",
+        "roastText": "Aey mamu! Raat ko 2:30 baje ₹420 ka Blinkit cart? Chips aur cold drink se body nahi sirf guilt badhega! Chupchap so jao re baba!",
+        "memeId": "clown_progression",
+        "isMidnightDemonic": true
+      },
+      {
+        "id": "exp_3",
+        "description": "Myntra: Casual Sneakers (Flat 40% Off Trap)",
+        "amount": 2890,
+        "category": "shopping_fashion",
+        "timestamp": "2026-09-08T05:03:37.920Z",
+        "impulseScore": 74,
+        "tier": "MEDIUM",
+        "severityLabel": "Level 2: Medium Roast",
+        "roastText": "Aey circuit! Dekh isko, Myntra pe \"Flat 50% Off\" dekh ke pighal gaya! ₹2,890 uda diye! Pure mamu behavior! 🤡",
+        "memeId": "not_stonks",
+        "isMidnightDemonic": false
+      },
+      {
+        "id": "exp_4",
+        "description": "Saturday Pub Bill & Shots with Friends",
+        "amount": 3600,
+        "category": "nightlife_entertainment",
+        "timestamp": "2026-09-07T09:03:37.920Z",
+        "impulseScore": 90,
+        "tier": "SAVAGE",
+        "severityLabel": "Level 3: Savage Guilt-Trap",
+        "roastText": "Club jaake \"Shots on me\" bolne ka bhoot sawar tha mamu? ₹3,600 ka bill dekh ke kal subah hangover nahi, bankruptcy aayegi!",
+        "memeId": "this_is_fine",
+        "isMidnightDemonic": true
+      },
+      {
+        "id": "exp_5",
+        "description": "Apollo Pharmacy: Fever meds + Multivitamins",
+        "amount": 460,
+        "category": "groceries_essentials",
+        "timestamp": "2026-09-06T21:03:37.920Z",
+        "impulseScore": 10,
+        "tier": "SAFE",
+        "severityLabel": "Responsible Spend",
+        "roastText": "Sensible spend of ₹460 mamu. Apun khush hai, wallet safe hai! 👍",
+        "memeId": null,
+        "isMidnightDemonic": false
+      },
+      {
+        "id": "exp_6",
+        "description": "Electricity & Broadband Bill",
+        "amount": 1450,
+        "category": "rent_utilities",
+        "timestamp": "2026-09-06T01:03:37.920Z",
+        "impulseScore": 0,
+        "tier": "SAFE",
+        "severityLabel": "Responsible Spend",
+        "roastText": "Adulting done right. At least the Wi-Fi will stay on while you cry over other impulse spends.",
+        "memeId": null,
+        "isMidnightDemonic": false
+      }
+    ]
+  },
+  "settings": {
+    "user_aaryan": {
+      "geminiApiKey": "",
+      "monthlyBudget": 25000,
+      "userName": "Aaryan Sharma",
+      "audioEnabled": true
+    }
+  }
+}
